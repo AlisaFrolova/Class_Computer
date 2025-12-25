@@ -12,6 +12,7 @@ private:
 	int readSpeed; //MB/s
 public:
 	//constructor
+	Storage();
 	Storage(int c, string t, int rS);
 
 	//setters

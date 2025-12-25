@@ -1,6 +1,7 @@
 #include "Storage.h"
 
 //constructor
+Storage::Storage() {}
 Storage::Storage(int c, string t, int rS) : capacity(c), type(t), readSpeed(rS){}
 
 //setters

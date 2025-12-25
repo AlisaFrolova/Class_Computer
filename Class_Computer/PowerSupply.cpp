@@ -1,6 +1,7 @@
 #include "PowerSupply.h"
 
 //constructor
+PowerSupply::PowerSupply() {}
 PowerSupply::PowerSupply(int w, string c) : wattage(w), certificate(c){}
 
 //setters

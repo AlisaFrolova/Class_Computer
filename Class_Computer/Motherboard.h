@@ -15,6 +15,7 @@ private:
 	string typeOfRAM; //4xDDR5 for example
 public:
 	//constructor
+	Motherboard();
 	Motherboard(string m, string c, string f, string s, string t);
 
 	//setters

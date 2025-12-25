@@ -1,6 +1,7 @@
 #include "CPU.h"
 
 //constructor
+CPU::CPU() {}
 CPU::CPU(string m, int cn, double f, string s) : model(m), coresNumber(cn), frequency(f), socket(s){}
 
 //setters 

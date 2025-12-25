@@ -14,6 +14,7 @@ private:
 	string socket; 
 public:
 	//constructor
+	CPU();
 	CPU(string m, int cn, double f, string s);
 
 	//setters 

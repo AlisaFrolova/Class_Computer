@@ -1,6 +1,7 @@
 #include "Motherboard.h"
 
 //constructor
+Motherboard::Motherboard() {}
 Motherboard::Motherboard(string m, string c, string f, string s, string t) : model(m), chipset(c), formFactor(f), socket(s), typeOfRAM(t) {}
 
 //setters

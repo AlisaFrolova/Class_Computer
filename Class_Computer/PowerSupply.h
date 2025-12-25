@@ -12,6 +12,7 @@ private:
 	string certificate;
 public:
 	//constructor
+	PowerSupply();
 	PowerSupply(int w, string c);
 
 	//setters

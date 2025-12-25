@@ -13,6 +13,7 @@ private:
 	int powerConsumption; //Watts
 public:
 	//constructor
+	GPU();
 	GPU(string m, int mS, int pC);
 
 	//setters
