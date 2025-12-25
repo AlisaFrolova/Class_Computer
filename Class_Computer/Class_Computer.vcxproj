@@ -127,11 +127,19 @@
     <ClCompile Include="CPU.cpp" />
     <ClCompile Include="GPU.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Motherboard.cpp" />
+    <ClCompile Include="PowerSupply.cpp" />
+    <ClCompile Include="RAM.cpp" />
+    <ClCompile Include="Storage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Computer.h" />
     <ClInclude Include="CPU.h" />
     <ClInclude Include="GPU.h" />
+    <ClInclude Include="Motherboard.h" />
+    <ClInclude Include="PowerSupply.h" />
+    <ClInclude Include="RAM.h" />
+    <ClInclude Include="Storage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

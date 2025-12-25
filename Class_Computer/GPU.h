@@ -21,7 +21,7 @@ public:
 	void setPowerConsumption(const int& new_pc);
 
 	//getters
-	const string& getModel() const;
+	const string& getModel() const;			
 	const int& getMemorySize() const;
 	const int& getPowerConsumption() const;
 };
