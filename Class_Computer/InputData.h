@@ -4,9 +4,6 @@
 
 using namespace std;
 
-const int MIN_VALUE = 1;
-const int MAX_VALUE = 10000;
-
 struct CPUInputData
 {
 	string model;
