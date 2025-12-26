@@ -24,10 +24,19 @@ public:
 	void showComputer(const vector<string>& studentsInfo);
 
 	//Enter data
+	CPUInputData inputCPUData();
+	GPUInputData inputGPUData();
+	RAMInputData inputRAMData();
+	StorageInputData inputStorageData();
+	PowerSupplyInputData inputPowerSupplyData();
+	MotherboardInputData inputMotherboardData();
+
+	//staff
+	void pause();
 	
 private:
 	//input data
-	int inputInt(const string& prompt, int min, int max);
+	int inputInt(const string& prompt, int min = INT_MIN, int max = INT_MAX);
 	string inputString(const string& prompt);
 };
 

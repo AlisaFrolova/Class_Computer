@@ -51,7 +51,62 @@ void ConsoleView::showComputer(const vector<string>& computerInfo)
 }
 
 //Enter data
+CPUInputData ConsoleView::inputCPUData()
+{
+	CPUInputData data;
+	data.model = inputString("Enter model of CPU: ");
+	data.cores = inputInt("Enter number of cores for CPU: ");
+	data.frequency = inputInt("Enter frequency of CPU (MHz) : ");
+	data.socket = inputString("Enter socket of CPU: ");
 
+	return data;
+}
+GPUInputData ConsoleView::inputGPUData()
+{
+	GPUInputData data;
+	data.model = inputString("Enter model of GPU (GB) : ");
+	data.memorySize = inputInt("Enter memory size of GPU: ");
+	data.powerConsumption = inputInt("Enter power consumption of GPU (Watts) : ");
+
+	return data;
+}
+RAMInputData ConsoleView::inputRAMData()
+{
+	RAMInputData data;
+	data.capacity = inputInt("Enter capacity of RAM module (GB) : ");
+	data.type = inputString("Enter type of RAM module (For example, DDR5) : ");
+	data.frequency = inputInt("Enter frequency of RAM module (MHz) : ");
+
+	return data;
+}
+StorageInputData ConsoleView::inputStorageData()
+{
+	StorageInputData data;
+	data.capacity = inputInt("Enter capacity of Storage (GB) : ");
+	data.type = inputString("Enter type of storage (For example, HDD or SSD) : ");
+	data.readSpeed = inputInt("Enter read speed of storage (MB/s) : ");
+
+	return data;
+}
+PowerSupplyInputData ConsoleView::inputPowerSupplyData()
+{
+	PowerSupplyInputData data;
+	data.wattage = inputInt("Enter wattage of power supply (Watts) : ");
+	data.certificate = inputString("Enter certificate of power supply (For example, Platinum, Gold and etc.) : ");
+
+	return data;
+}
+MotherboardInputData ConsoleView::inputMotherboardData()
+{
+	MotherboardInputData data;
+	data.model = inputString("Enter model of motherboard: ");
+	data.chipset = inputString("Enter chipset of motherboard: ");
+	data.formFactor = inputString("Enter form factor of motherboard: ");
+	data.socket = inputString("Enter socket of motherboard: ");
+	data.typeOfRAM = inputString("Enter type of RAM of motherboard (For example, 4xDDR5) : ");
+
+	return data;
+}
 
 //input data
 int ConsoleView::inputInt(const string& prompt, int min, int max)
@@ -90,4 +145,11 @@ string ConsoleView::inputString(const string& prompt)
 		getline(cin, s);
 
 	return s;
+}
+
+//staff
+void ConsoleView::pause()
+{
+	cout << "\nEnter Enter to continue...";
+	cin.ignore(256, '\n');
 }
