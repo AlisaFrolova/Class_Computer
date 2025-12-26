@@ -6,27 +6,27 @@ Computer::Computer() { hasCPU = false; hasGPU = false; hasStorage = false; hasPo
 //setters
 void Computer::setType(const string& new_t)
 {
-
+	type = new_t;
 }
 void Computer::setCPU(const CPU& new_c)
 {
-
+	cpu = new_c;
 }
 void Computer::setGPU(const GPU& new_g)
 {
-
+	gpu = new_g;
 }
 void Computer::setStorage(const Storage& new_s)
 {
-
+	storage = new_s;
 }
 void Computer::setPowerSupply(const PowerSupply& new_ps)
 {
-
+	power_supply = new_ps;
 }
 void Computer::setMotherboard(const Motherboard& new_m)
 {
-
+	motherboard = new_m;
 }
 
 //getters
@@ -58,5 +58,7 @@ const Motherboard& Computer::getMotherboard()const
 //RAM-work
 bool Computer::addRAM(RAM new_ram)
 {
+
+	ramModules.push_back(new_ram);
 	return true;
 }
