@@ -29,7 +29,7 @@ bool ComputerValidator::isValidRAMModule(const RAM& module)
 	else
 	 return true;
 }
-bool ComputerValidator::isValidRAM(const vector <RAM>& ramModules)
+bool ComputerValidator::areValidRAM(const vector <RAM>& ramModules)
 {
 	for (int i = 0; i < ramModules.size(); i++)
 	{

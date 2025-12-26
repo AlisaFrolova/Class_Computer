@@ -21,7 +21,7 @@ public:
 	static bool isValidCPU(const CPU& cpu);
 	static bool isValidGPU(const GPU& gpu);
 	static bool isValidRAMModule(const RAM& module);
-	static bool isValidRAM(const vector <RAM>& ramModules);
+	static bool areValidRAM(const vector <RAM>& ramModules);
 	static bool isValidStorage(const Storage& storage);
 	static bool isValidPowerSupply(const PowerSupply& power_supply);
 	static bool isValidMotherboard(const Motherboard& motherboard);

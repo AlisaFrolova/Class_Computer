@@ -2,7 +2,7 @@
 
 //constructor
 CPU::CPU() {}
-CPU::CPU(string m, int cn, double f, string s) : model(m), coresNumber(cn), frequency(f), socket(s){}
+CPU::CPU(string m, int cn, int f, string s) : model(m), coresNumber(cn), frequency(f), socket(s){}
 
 //setters 
 void CPU::setModel(const string& new_m) 
@@ -13,7 +13,7 @@ void CPU::setCoresNumber(const int& new_cn)
 {
 	coresNumber = new_cn;
 }
-void CPU::setFrequency(const double& new_f)
+void CPU::setFrequency(const int& new_f)
 {
 	frequency = new_f;
 }

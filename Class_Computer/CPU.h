@@ -10,17 +10,17 @@ class CPU
 private:
 	string model;
 	int coresNumber;
-	double frequency; //GHz
+	int frequency; //MHz
 	string socket; 
 public:
 	//constructor
 	CPU();
-	CPU(string m, int cn, double f, string s);
+	CPU(string m, int cn, int f, string s);
 
 	//setters 
 	void setModel(const string &new_m);
 	void setCoresNumber(const int& new_cn);
-	void setFrequency(const double &new_f);
+	void setFrequency(const int &new_f);
 	void setSocket(const string& new_s);
 
 	//getters

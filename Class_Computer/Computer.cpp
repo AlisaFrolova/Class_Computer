@@ -4,36 +4,38 @@
 Computer::Computer() { hasCPU = false; hasGPU = false; hasStorage = false; hasPowerSupply = false; hasMotherboard = false; }
 
 //setters
-void Computer::setType(const string& new_t)
+bool Computer::setCPU(const CPU& new_c)
 {
-	type = new_t;
-}
-void Computer::setCPU(const CPU& new_c)
-{
+	if (!ComputerValidator::isValidCPU(new_c)) return false;
 	cpu = new_c;
+	return true;
 }
-void Computer::setGPU(const GPU& new_g)
+bool Computer::setGPU(const GPU& new_g)
 {
+	if (!ComputerValidator::isValidGPU(new_g)) return false;
 	gpu = new_g;
+	return true;
 }
-void Computer::setStorage(const Storage& new_s)
+bool Computer::setStorage(const Storage& new_s)
 {
+	if (!ComputerValidator::isValidStorage(new_s)) return false;
 	storage = new_s;
+	return true;
 }
-void Computer::setPowerSupply(const PowerSupply& new_ps)
+bool Computer::setPowerSupply(const PowerSupply& new_ps)
 {
+	if (!ComputerValidator::isValidPowerSupply(new_ps)) return false;
 	power_supply = new_ps;
+	return true;
 }
-void Computer::setMotherboard(const Motherboard& new_m)
+bool Computer::setMotherboard(const Motherboard& new_m)
 {
+	if (!ComputerValidator::isValidMotherboard(new_m)) return false;
 	motherboard = new_m;
+	return true;
 }
 
 //getters
-const string& Computer::getType()const
-{
-	return type;
-}
 const CPU& Computer::getCPU()const
 {
 	return cpu;
@@ -56,9 +58,9 @@ const Motherboard& Computer::getMotherboard()const
 }
 
 //RAM-work
-bool Computer::addRAM(RAM new_ram)
+bool Computer::addRAM(RAM& new_ram)
 {
-
+	if (!ComputerValidator::isValidRAMModule(new_ram)) return false;
 	ramModules.push_back(new_ram);
 	return true;
 }

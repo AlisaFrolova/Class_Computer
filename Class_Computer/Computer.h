@@ -10,13 +10,13 @@
 #include "Storage.h"
 #include "PowerSupply.h"
 #include "Motherboard.h"
+#include "ComputerValidator.h"
 
 using namespace std;
 
 class Computer
 {
 private:
-	string type;
 	CPU cpu;
 	GPU gpu;
 	vector <RAM> ramModules;
@@ -34,15 +34,13 @@ public:
 	Computer();
 
 	//setters
-	void setType(const string& new_t);
-	void setCPU(const CPU& new_c);
-	void setGPU(const GPU& new_g);
-	void setStorage(const Storage& new_s);
-	void setPowerSupply(const PowerSupply& new_ps);
-	void setMotherboard(const Motherboard& new_m);
+	bool setCPU(const CPU& new_c);
+	bool setGPU(const GPU& new_g);
+	bool setStorage(const Storage& new_s);
+	bool setPowerSupply(const PowerSupply& new_ps);
+	bool setMotherboard(const Motherboard& new_m);
 
 	//getters
-	const string& getType()const;
 	const CPU& getCPU()const;
 	const GPU& getGPU()const;
 	const Storage& getStorage()const;
@@ -50,5 +48,5 @@ public:
 	const Motherboard& getMotherboard()const;
 
 	//RAM-work
-	bool addRAM(RAM new_module);
+	bool addRAM(RAM& new_module);
 };
