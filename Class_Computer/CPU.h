@@ -26,7 +26,7 @@ public:
 	//getters
 	const string& getModel() const;
 	const int& getCoresNumber() const;
-	const double& getFrequency() const;
+	const int& getFrequency() const;
 	const string& getSocket() const;
 };
 

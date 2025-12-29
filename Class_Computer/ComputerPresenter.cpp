@@ -15,13 +15,12 @@ void ComputerPresenter::run()
 
 		switch (choice)
 		{
-		case 1: changeComputer(); break;
-		case 2: view.showMessage("Not available right now, sorry!"); break;
-		case 3: checkBuildState(); break;
-		case 4: showComputer(); break;
-		case 5: showComponent(); break;
-		case 6: cleanComputer(); break;
-		case 0: running = false; break;
+		case 1: changeComputer(); break; // +
+		case 2: view.showMessage("Not available right now, sorry!"); break;//-
+		case 3: checkBuildState(); break; //+
+		case 4: showComputer(); break; //+
+		case 5: cleanComputer(); break; //+
+		case 0: running = false; break; //+
 		default: view.showMessage("Incorrect enter."); break;
 		}
 	}
@@ -129,17 +128,146 @@ void ComputerPresenter::changeComputer()
 }
 void ComputerPresenter::cleanComputer()
 {
-
+	Computer new_pc;
+	pc = new_pc;
+	view.showMessage("Computer has been cleaned!");
 }
+
 void ComputerPresenter::showComputer()
 {
+	bool showing = true;
+	while (showing)
+	{
+		view.showComputerMenu();
+		int choice = view.getComputerMenuChoice();
 
+		switch (choice)
+		{
+		case 1: 
+		{
+			view.showComputerComponent(getCPUInfo());
+			break;
+		}
+		case 2:
+		{
+			view.showComputerComponent(getGPUInfo());
+			break;
+		}
+		case 3: 
+		{
+			view.showComputer(getRAMInfo());
+			break;
+		}
+		case 4: 
+		{
+			view.showComputerComponent(getStorageInfo());
+			break;
+		}
+		case 5: 
+		{
+			view.showComputerComponent(getPowerSupplyInfo());
+			break;
+		}
+		case 6:
+		{
+			view.showComputerComponent(getMotherboardInfo());
+			break;
+		}
+		case 7:
+		{
+			view.showComputerComponent(getCPUInfo());
+			view.showComputerComponent(getGPUInfo());
+			view.showComputer(getRAMInfo());
+			view.showComputerComponent(getStorageInfo());
+			view.showComputerComponent(getPowerSupplyInfo());
+			view.showComputerComponent(getMotherboardInfo());
+			break;
+		}
+		case 0:
+		{
+			showing = false;
+			break;
+		}
+		default:
+		{
+			view.showMessage("Incorrect choice.");
+			break;
+		}
+		}
+	}
 }
-void ComputerPresenter::showComponent()
+string ComputerPresenter::getCPUInfo() 
 {
-
+	if (pc.isCPUInstalled())
+	{
+		string CPU_data = "CPU info: \n" + pc.getCPU().getModel() + " " + to_string(pc.getCPU().getCoresNumber()) + " " + to_string(pc.getCPU().getFrequency()) + " " + pc.getCPU().getSocket();
+		return CPU_data;
+	}
+	else
+		return "CPU is not installed!";
 }
+string ComputerPresenter::getGPUInfo() 
+{
+	if (pc.isGPUInstalled())
+	{
+		string GPU_data = "GPU info: \n" + pc.getGPU().getModel() + " " + to_string(pc.getGPU().getMemorySize()) + " " + to_string(pc.getGPU().getPowerConsumption());
+		return GPU_data;
+	}
+	else
+		return "GPU is not installed!";
+}
+vector <string> ComputerPresenter::getRAMInfo() 
+{
+	vector<string> RAM_data;
+	if (pc.isRAMInstalled())
+	{
+		RAM_data.push_back("Number of Modules: " + to_string(pc.getRAM().size()));
+		for (int i = 0; i < pc.getRAM().size(); i++)
+		{
+			RAM_data.push_back(to_string(pc.getRAM().at(i).getCapacity()) + " " + pc.getRAM().at(i).getType() + " " + to_string(pc.getRAM().at(i).getFrequency()));
+		}
+		return RAM_data;
+	}
+	else
+	{
+		RAM_data.push_back("RAM is not installed!");
+		return RAM_data;
+	}
+}
+string ComputerPresenter::getStorageInfo() 
+{
+	if (pc.isStorageInstalled())
+	{
+		string Storage_data = "Storage info: \n" + to_string(pc.getStorage().getCapacity()) + " " + pc.getStorage().getType() + " " + to_string(pc.getStorage().getReadSpeed());
+		return Storage_data;
+	}
+	else
+		return "Storage is not installed!";
+}
+string ComputerPresenter::getPowerSupplyInfo()
+{
+	if (pc.isPowerSupplyInstalled())
+	{
+		string PowerSupply_data = "Power Supply info: \n" + to_string(pc.getPowerSupply().getWattage()) + " " + pc.getPowerSupply().getCertificate();
+		return PowerSupply_data;
+	}
+	else
+		return "Power Supply is not installed!";
+}
+string ComputerPresenter::getMotherboardInfo()
+{
+	if (pc.isMotherboardInstalled())
+	{
+		string Motherboard_data = "Motherboard info: \n" + pc.getMotherboard().getModel() + " " + pc.getMotherboard().getChipset() + " " + pc.getMotherboard().getFormFactor() + " " + pc.getMotherboard().getSocket() + " " + pc.getMotherboard().getTypeOfRAM();
+		return Motherboard_data;
+	}
+	else
+		return "Motherboard is not installed!";
+}
+
 void ComputerPresenter::checkBuildState()
 {
-
+	if (pc.isCPUInstalled() && pc.isGPUInstalled() && pc.isRAMInstalled() && pc.isStorageInstalled() && pc.isPowerSupplyInstalled() && pc.isMotherboardInstalled()) view.showMessage("Build is completed!");
+	else
+		view.showMessage("Build is not completed!");
 }

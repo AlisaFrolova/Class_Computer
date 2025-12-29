@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <string>
+
 #include "Computer.h"
 #include "ComputerValidator.h"
 #include "ConsoleView.h"
@@ -19,7 +22,13 @@ private:
 	void changeComputer();
 	void cleanComputer();
 	void showComputer();
-	void showComponent();
 	void checkBuildState();
+
+	string getCPUInfo();
+	string getGPUInfo();
+	vector <string> getRAMInfo();
+	string getStorageInfo();
+	string getPowerSupplyInfo();
+	string getMotherboardInfo();
 };
 

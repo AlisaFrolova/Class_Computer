@@ -43,10 +43,19 @@ public:
 	//getters
 	const CPU& getCPU()const;
 	const GPU& getGPU()const;
+	const vector<RAM>& getRAM() const;
 	const Storage& getStorage()const;
 	const PowerSupply& getPowerSupply()const;
 	const Motherboard& getMotherboard()const;
 
 	//RAM-work
 	bool addRAM(RAM& new_module);
+
+	//check for existence
+	bool isCPUInstalled() const;
+	bool isGPUInstalled() const;
+	bool isRAMInstalled() const;
+	bool isStorageInstalled() const;
+	bool isPowerSupplyInstalled() const;
+	bool isMotherboardInstalled() const;
 };

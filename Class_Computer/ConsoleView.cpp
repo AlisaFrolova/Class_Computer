@@ -8,14 +8,13 @@ void ConsoleView::showMainMenu()
 	cout << "1. Change components\n";
 	cout << "2. Check compatibility of the components\n";
 	cout << "3. Check build state\n";
-	cout << "4. Show the whole build\n";
-	cout << "5. Show one of the components\n";
-	cout << "6. Clean build (delete)\n";
+	cout << "4. Show computer's build\n";
+	cout << "5. Clean build (delete)\n";
 	cout << "0. Exit\n";
 }
 int ConsoleView::getMainMenuChoice()
 {
-	return inputInt("Choose an option: ", 0, 6);
+	return inputInt("Choose an option: ", 0, 5);
 }
 
 //Edit menu
@@ -33,6 +32,24 @@ void ConsoleView::showComputerEditMenu()
 int ConsoleView::getComputerEditChoice()
 {
 	return inputInt("Choose an option: ", 0, 6);
+}
+
+//Computer menu
+void ConsoleView::showComputerMenu()
+{
+	cout << "\n--- Computer menu ---\n";
+	cout << "1. Show CPU\n";
+	cout << "2. Show GPU\n";
+	cout << "3. Show RAM\n";
+	cout << "4. Show Storage\n";
+	cout << "5. Show Power Supply\n";
+	cout << "6. Show Motherboard\n";
+	cout << "7. Show the whole build\n";
+	cout << "0. Back\n";
+}
+int ConsoleView::getComputerMenuChoice()
+{
+	return inputInt("Choose an option: ", 0, 7);
 }
 
 //Show

@@ -31,7 +31,7 @@ const int& CPU::getCoresNumber() const
 {
 	return coresNumber;
 }
-const double& CPU::getFrequency() const
+const int& CPU::getFrequency() const
 {
 	return frequency;
 }

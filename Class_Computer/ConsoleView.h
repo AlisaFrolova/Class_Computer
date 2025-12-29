@@ -18,6 +18,10 @@ public:
 	void showComputerEditMenu();
 	int getComputerEditChoice();
 
+	//Computer menu
+	void showComputerMenu();
+	int getComputerMenuChoice();
+
 	//Show
 	void showMessage(const string& message);
 	void showComputerComponent(const string& componentInfo);
