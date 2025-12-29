@@ -81,8 +81,8 @@ CPUInputData ConsoleView::inputCPUData()
 GPUInputData ConsoleView::inputGPUData()
 {
 	GPUInputData data;
-	data.model = inputString("Enter model of GPU (GB) : ");
-	data.memorySize = inputInt("Enter memory size of GPU: ");
+	data.model = inputString("Enter model of GPU : ");
+	data.memorySize = inputInt("Enter memory size of GPU (GB) : ");
 	data.powerConsumption = inputInt("Enter power consumption of GPU (Watts) : ");
 
 	return data;

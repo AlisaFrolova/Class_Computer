@@ -23,6 +23,7 @@ private:
 	void cleanComputer();
 	void showComputer();
 	void checkBuildState();
+	void checkCompatibility();
 
 	string getCPUInfo();
 	string getGPUInfo();
