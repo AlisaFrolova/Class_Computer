@@ -16,7 +16,7 @@ void ComputerPresenter::run()
 		switch (choice)
 		{
 		case 1: changeComputer(); break; // +
-		case 2: checkCompatibility(); break;//-
+		case 2: checkCompatibility(); break;//+
 		case 3: checkBuildState(); break; //+
 		case 4: showComputer(); break; //+
 		case 5: cleanComputer(); break; //+
@@ -274,28 +274,73 @@ void ComputerPresenter::checkBuildState()
 
 void ComputerPresenter::checkCompatibility()
 {
-	//1. CPU-Motherboard check
-	if (pc.getCPU().getSocket() == pc.getMotherboard().getSocket()) view.showMessage("CPU and Motherboard are compatible!");
-	else
-		view.showMessage("1. CPU and Motherboard are not compatible!");
-
-	//2. RAM-Motherboard check
-	bool ram_comp = true;
-	for (int i = 0; i < pc.getRAM().size(); i++)
+	bool checking = true;
+	while (checking)
 	{
-		string ram_data = to_string(pc.getRAM().size()) + "x" + pc.getRAM().at(i).getType();
-		if (ram_data != pc.getMotherboard().getTypeOfRAM()) ram_comp = false;
-	}
-	if (ram_comp) view.showMessage("2. RAM and Motherboard are compatible!");
-	else
-		view.showMessage("2. RAM and Motherboard are not compatible!");
+		view.showCompatibilityMenu();
+		int choice = view.getCompatibilityMenuChoice();
 
-	//3. Power Supply check
-	int wattage_sum;
-	int cpu_wattage = pc.getCPU().getCoresNumber() * 0.002 * pc.getCPU().getFrequency();
-	int ram_wattage = pc.getRAM().size() * 3;
-	wattage_sum = cpu_wattage + pc.getGPU().getPowerConsumption() + ram_wattage + 5 + 30;
-	if (wattage_sum > pc.getPowerSupply().getWattage()) view.showMessage("3. Power Supply is not powerful enough for current build!");
-	else
-		view.showMessage("3. Power Supply is powerful enough for current build!");
+		switch (choice)
+		{
+		case 1:
+		{
+		//1. CPU-Motherboard check
+		if (pc.isCPUInstalled() && pc.isMotherboardInstalled())
+		{
+			if (pc.getCPU().getSocket() == pc.getMotherboard().getSocket()) view.showMessage("CPU and Motherboard are compatible!");
+			else
+				view.showMessage("1. CPU and Motherboard are not compatible!");
+		}
+		else
+			view.showMessage("CPU and/or Motherboard are not installed!");
+		break;
+		}
+		case 2:
+		{
+		//2. RAM-Motherboard check
+		if (pc.isRAMInstalled() && pc.isMotherboardInstalled())
+		{
+			bool ram_comp = true;
+			for (int i = 0; i < pc.getRAM().size(); i++)
+			{
+				string ram_data = to_string(pc.getRAM().size()) + "x" + pc.getRAM().at(i).getType();
+				if (ram_data != pc.getMotherboard().getTypeOfRAM()) ram_comp = false;
+			}
+			if (ram_comp) view.showMessage("2. RAM and Motherboard are compatible!");
+			else
+				view.showMessage("2. RAM and Motherboard are not compatible!");
+		}
+		else
+			view.showMessage("RAM and/or Motherboard are not installed");
+		break;
+		}
+		case 3:
+		{
+			//3. Power Supply check
+			if (pc.isPowerSupplyInstalled())
+			{
+				int wattage_sum;
+				int cpu_wattage = pc.getCPU().getCoresNumber() * 0.002 * pc.getCPU().getFrequency();
+				int ram_wattage = pc.getRAM().size() * 3;
+				wattage_sum = cpu_wattage + pc.getGPU().getPowerConsumption() + ram_wattage + 5 + 30;
+				if (wattage_sum > pc.getPowerSupply().getWattage()) view.showMessage("3. Power Supply is not powerful enough for current build!");
+				else
+					view.showMessage("3. Power Supply is powerful enough for current build!");
+			}
+			else
+				view.showMessage("Power Supply is not installed!");
+			break;
+		}
+		case 0:
+		{
+			checking = false; 
+			break;
+		}
+		default: 
+		{
+			view.showMessage("Incorrect choice.");
+			break;
+		}
+		}
+	}
 }

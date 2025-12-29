@@ -4,13 +4,17 @@
 //Main menu
 void ConsoleView::showMainMenu()
 {
+	cout << "\033[97m";
 	cout << "\n--- Main menu ---\n";
+	cout << "\033[0m";
 	cout << "1. Change components\n";
 	cout << "2. Check compatibility of the components\n";
 	cout << "3. Check build state\n";
 	cout << "4. Show computer's build\n";
 	cout << "5. Clean build (delete)\n";
+	cout << "\033[32m";
 	cout << "0. Exit\n";
+	cout << "\033[0m";
 }
 int ConsoleView::getMainMenuChoice()
 {
@@ -20,14 +24,18 @@ int ConsoleView::getMainMenuChoice()
 //Edit menu
 void ConsoleView::showComputerEditMenu()
 {
+	cout << "\033[97m";
 	cout << "\n--- Edit menu ---\n";
+	cout << "\033[0m";
 	cout << "1. Change CPU\n";
 	cout << "2. Change GPU\n";
 	cout << "3. Change RAM\n";
 	cout << "4. Change Storage\n";
 	cout << "5. Change Power Supply\n";
 	cout << "6. Change Motherboard\n";
+	cout << "\033[32m";
 	cout << "0. Back\n";
+	cout << "\033[0m";
 }
 int ConsoleView::getComputerEditChoice()
 {
@@ -37,7 +45,9 @@ int ConsoleView::getComputerEditChoice()
 //Computer menu
 void ConsoleView::showComputerMenu()
 {
+	cout << "\033[97m";
 	cout << "\n--- Computer menu ---\n";
+	cout << "\033[0m";
 	cout << "1. Show CPU\n";
 	cout << "2. Show GPU\n";
 	cout << "3. Show RAM\n";
@@ -45,26 +55,52 @@ void ConsoleView::showComputerMenu()
 	cout << "5. Show Power Supply\n";
 	cout << "6. Show Motherboard\n";
 	cout << "7. Show the whole build\n";
+	cout << "\033[32m";
 	cout << "0. Back\n";
+	cout << "\033[0m";
 }
 int ConsoleView::getComputerMenuChoice()
 {
 	return inputInt("Choose an option: ", 0, 7);
 }
 
+//Check Compatibility Menu
+void ConsoleView::showCompatibilityMenu()
+{
+	cout << "\033[97m";
+	cout << "\n--- Compatibility menu ---\n";
+	cout << "\033[0m";
+	cout << "1. Check CPU/Motherboard compatibility\n";
+	cout << "2. Check RAM/Motherboard compatibility\n";
+	cout << "3. Check Power Supply power\n";
+	cout << "\033[32m";
+	cout << "0. Back\n";
+	cout << "\033[0m";
+}
+int ConsoleView::getCompatibilityMenuChoice()
+{
+	return inputInt("Choose an option: ", 0, 3);
+}
+
 //Show
 void ConsoleView::showMessage(const string& message)
 {
+	cout << "\033[33m";
 	cout << message << endl;
+	cout << "\033[0m";
 }
 void ConsoleView::showComputerComponent(const string& componentInfo)
 {
+	cout << "\033[36m";
 	cout << componentInfo << endl;
+	cout << "\033[0m";
 }
 void ConsoleView::showComputer(const vector<string>& computerInfo)
 {
+	cout << "\033[36m";
 	for (const auto& s : computerInfo)
 		cout << s << endl;
+	cout << "\033[0m";
 }
 
 //Enter data
@@ -141,12 +177,12 @@ int ConsoleView::inputInt(const string& prompt, int min, int max)
 			}
 			else
 			{
-				cout << "Number should be from [" << min << " to " << max << "]\n";
+				cout << "\033[34m" << "Number should be from [" << min << " to " << max << "]\n" << "\033[0m";
 			}
 		}
 		else
 		{
-			cout << "Incorrect enter. Try again.\n";
+			cout << "\033[31m" << "Incorrect enter. Try again.\n" << "\033[0m\n";
 			cin.clear();
 			cin.ignore(256, '\n');
 		}

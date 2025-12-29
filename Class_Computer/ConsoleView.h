@@ -22,6 +22,10 @@ public:
 	void showComputerMenu();
 	int getComputerMenuChoice();
 
+	//Check Compatibility menu
+	void showCompatibilityMenu();
+	int getCompatibilityMenuChoice();
+
 	//Show
 	void showMessage(const string& message);
 	void showComputerComponent(const string& componentInfo);
