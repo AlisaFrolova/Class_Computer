@@ -110,3 +110,10 @@ bool Computer::isMotherboardInstalled() const
 	else
 		return false;
 }
+
+bool Computer::isBuildReady() const
+{
+	if (isCPUInstalled() && isGPUInstalled() && isRAMInstalled() && isStorageInstalled() && isPowerSupplyInstalled() && isMotherboardInstalled()) return true;
+	else
+		return false;
+}

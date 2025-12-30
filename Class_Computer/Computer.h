@@ -58,4 +58,6 @@ public:
 	bool isStorageInstalled() const;
 	bool isPowerSupplyInstalled() const;
 	bool isMotherboardInstalled() const;
+
+	bool isBuildReady() const;
 };

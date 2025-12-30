@@ -73,13 +73,14 @@ void ConsoleView::showCompatibilityMenu()
 	cout << "1. Check CPU/Motherboard compatibility\n";
 	cout << "2. Check RAM/Motherboard compatibility\n";
 	cout << "3. Check Power Supply power\n";
+	cout << "4. Check Computer power\n";
 	cout << "\033[32m";
 	cout << "0. Back\n";
 	cout << "\033[0m";
 }
 int ConsoleView::getCompatibilityMenuChoice()
 {
-	return inputInt("Choose an option: ", 0, 3);
+	return inputInt("Choose an option: ", 0, 4);
 }
 
 //Show

@@ -267,7 +267,7 @@ string ComputerPresenter::getMotherboardInfo()
 
 void ComputerPresenter::checkBuildState()
 {
-	if (pc.isCPUInstalled() && pc.isGPUInstalled() && pc.isRAMInstalled() && pc.isStorageInstalled() && pc.isPowerSupplyInstalled() && pc.isMotherboardInstalled()) view.showMessage("Build is completed!");
+	if (pc.isBuildReady()) view.showMessage("Build is completed!");
 	else
 		view.showMessage("Build is not completed!");
 }
@@ -330,6 +330,47 @@ void ComputerPresenter::checkCompatibility()
 			else
 				view.showMessage("Power Supply is not installed!");
 			break;
+		}
+		case 4:
+		{
+			//4. Computer power check
+			if (pc.isBuildReady())
+			{
+				int power_points = 0;
+
+				//CPU-check
+				if (pc.getCPU().getCoresNumber() >= 8) power_points++;
+				if (pc.getCPU().getFrequency() >= 45) power_points++;
+
+				//GPU-check
+				if (pc.getGPU().getMemorySize() >= 10) power_points++;
+				
+				//RAM-check
+				if (pc.getRAM().size() >= 4) power_points++;
+				int ram_sum = 0;
+				for (int i = 0; i < pc.getRAM().size(); i++)
+				{
+					ram_sum += pc.getRAM().at(i).getCapacity();
+					if (pc.getRAM().at(i).getType() == "DDR4" || pc.getRAM().at(i).getType() == "DDR5") power_points++;
+				}
+				if (ram_sum >= 16) power_points++;
+				
+				//Storage-check
+				if (pc.getStorage().getCapacity() >= 500) power_points++;
+				if (pc.getStorage().getReadSpeed() >= 6000) power_points++;
+
+				//PowerSupply-check
+				if (pc.getPowerSupply().getWattage() >= 750) power_points++;
+				if (pc.getPowerSupply().getCertificate() == "80+ Gold" || pc.getPowerSupply().getCertificate() == "Platinum" || pc.getPowerSupply().getCertificate() == "Titanium") power_points++;
+
+				//Motherboard-check
+				if (pc.getMotherboard().getChipset() == "Z" || pc.getMotherboard().getChipset() == "B" || pc.getMotherboard().getChipset() == "X") power_points++;
+				if (pc.getMotherboard().getFormFactor() == "ATX") power_points++;
+				
+				if (power_points >= 10) view.showMessage("Computer is powerful!");
+				else
+					view.showMessage("Computer is not very powerful!");
+			}
 		}
 		case 0:
 		{
