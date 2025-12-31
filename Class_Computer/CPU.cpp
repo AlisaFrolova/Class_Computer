@@ -2,10 +2,10 @@
 
 //constructor
 CPU::CPU() {}
-CPU::CPU(string m, int cn, int f, string s) : model(m), coresNumber(cn), frequency(f), socket(s){}
+CPU::CPU(std::string m, int cn, int f, std::string s) : model(m), coresNumber(cn), frequency(f), socket(s){}
 
 //setters 
-void CPU::setModel(const string& new_m) 
+void CPU::setModel(const std::string& new_m)
 {
 	model = new_m;
 }
@@ -17,13 +17,13 @@ void CPU::setFrequency(const int& new_f)
 {
 	frequency = new_f;
 }
-void CPU::setSocket(const string& new_s)
+void CPU::setSocket(const std::string& new_s)
 {
 	socket = new_s;
 }
 
 //getters
-const string& CPU::getModel() const
+const std::string& CPU::getModel() const
 {
 	return model;
 }
@@ -35,7 +35,7 @@ const int& CPU::getFrequency() const
 {
 	return frequency;
 }
-const string& CPU::getSocket() const
+const std::string& CPU::getSocket() const
 {
 	return socket;
 }

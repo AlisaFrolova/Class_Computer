@@ -2,10 +2,10 @@
 
 //constructor
 GPU::GPU() {}
-GPU::GPU(string m, int mS, int pC) : model(m), memorySize(mS), powerConsumption(pC){}
+GPU::GPU(std::string m, int mS, int pC) : model(m), memorySize(mS), powerConsumption(pC){}
 
 //setters
-void GPU::setModel(const string& new_m)
+void GPU::setModel(const std::string& new_m)
 {
 	model = new_m;
 }
@@ -19,7 +19,7 @@ void GPU::setPowerConsumption(const int& new_pc)
 }
 
 //getters
-const string& GPU::getModel() const
+const std::string& GPU::getModel() const
 {
 	return model;
 }

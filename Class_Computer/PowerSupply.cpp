@@ -2,14 +2,14 @@
 
 //constructor
 PowerSupply::PowerSupply() {}
-PowerSupply::PowerSupply(int w, string c) : wattage(w), certificate(c){}
+PowerSupply::PowerSupply(int w, std::string c) : wattage(w), certificate(c){}
 
 //setters
 void PowerSupply::setWattage(const int& new_w)
 {
 	wattage = new_w;
 }
-void PowerSupply::setCertificate(const string& new_c)
+void PowerSupply::setCertificate(const std::string& new_c)
 {
 	certificate = new_c;
 }
@@ -19,7 +19,7 @@ const int& PowerSupply::getWattage() const
 {
 	return wattage;
 }
-const string& PowerSupply::getCertificate() const
+const std::string& PowerSupply::getCertificate() const
 {
 	return certificate;
 }

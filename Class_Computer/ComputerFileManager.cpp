@@ -1,21 +1,21 @@
 #include "ComputerFileManager.h"
 
-void ComputerFileManager::writeFile(const vector <string>& data)
+void ComputerFileManager::writeFile(const std::vector <std::string>& data)
 {
-	ofstream fout(FILE_NAME, ios::out);
+	std::ofstream fout(FILE_NAME, std::ios::out);
 	for (int i = 0; i < data.size(); i++)
 	{
-		fout << data.at(i) << endl;
+		fout << data.at(i) << std::endl;
 	}
 }
 
-vector <string> ComputerFileManager::readFile()
+std::vector <std::string> ComputerFileManager::readFile()
 {
-	ifstream fin(FILE_NAME, ios::in);
-	vector <string> data;
+	std::ifstream fin(FILE_NAME, std::ios::in);
+	std::vector <std::string> data;
 	if (fin.is_open())
 	{
-		string line;
+		std::string line;
 		while (getline(fin, line))
 		{
 			data.push_back(line);

@@ -1,7 +1,5 @@
 #include "ComputerPresenter.h"
 
-using namespace std;
-
 ComputerPresenter::ComputerPresenter(Computer& pc, ConsoleView& view) : pc(pc), view(view){}
 
 void ComputerPresenter::run()
@@ -197,35 +195,35 @@ void ComputerPresenter::showComputer()
 		}
 	}
 }
-string ComputerPresenter::getCPUInfo() 
+std::string ComputerPresenter::getCPUInfo() const
 {
 	if (pc.isCPUInstalled())
 	{
-		string CPU_data = "CPU info: " + pc.getCPU().getModel() + " | " + to_string(pc.getCPU().getCoresNumber()) + " | " + to_string(pc.getCPU().getFrequency()) + " | " + pc.getCPU().getSocket();
+		std::string CPU_data = "CPU info: " + pc.getCPU().getModel() + " | " + std::to_string(pc.getCPU().getCoresNumber()) + " | " + std::to_string(pc.getCPU().getFrequency()) + " | " + pc.getCPU().getSocket();
 		return CPU_data;
 	}
 	else
 		return "CPU is not installed!";
 }
-string ComputerPresenter::getGPUInfo() 
+std::string ComputerPresenter::getGPUInfo() const
 {
 	if (pc.isGPUInstalled())
 	{
-		string GPU_data = "GPU info: " + pc.getGPU().getModel() + " | " + to_string(pc.getGPU().getMemorySize()) + " | " + to_string(pc.getGPU().getPowerConsumption());
+		std::string GPU_data = "GPU info: " + pc.getGPU().getModel() + " | " + std::to_string(pc.getGPU().getMemorySize()) + " | " + std::to_string(pc.getGPU().getPowerConsumption());
 		return GPU_data;
 	}
 	else
 		return "GPU is not installed!";
 }
-string ComputerPresenter::getRAMInfo() 
+std::string ComputerPresenter::getRAMInfo() const
 {
-	string RAM_data;
+	std::string RAM_data;
 	if (pc.isRAMInstalled())
 	{
-		RAM_data = "Number of Modules: " + to_string(pc.getRAM().size()) + ": ";
+		RAM_data = "Number of Modules: " + std::to_string(pc.getRAM().size()) + ": ";
 		for (int i = 0; i < pc.getRAM().size(); i++)
 		{
-			RAM_data = RAM_data + to_string(pc.getRAM().at(i).getCapacity()) + " | " + pc.getRAM().at(i).getType() + " | " + to_string(pc.getRAM().at(i).getFrequency()) + "; ";
+			RAM_data = RAM_data + std::to_string(pc.getRAM().at(i).getCapacity()) + " | " + pc.getRAM().at(i).getType() + " | " + std::to_string(pc.getRAM().at(i).getFrequency()) + "; ";
 		}
 		return RAM_data;
 	}
@@ -235,31 +233,31 @@ string ComputerPresenter::getRAMInfo()
 		return RAM_data;
 	}
 }
-string ComputerPresenter::getStorageInfo() 
+std::string ComputerPresenter::getStorageInfo() const
 {
 	if (pc.isStorageInstalled())
 	{
-		string Storage_data = "Storage info: " + to_string(pc.getStorage().getCapacity()) + " | " + pc.getStorage().getType() + " | " + to_string(pc.getStorage().getReadSpeed());
+		std::string Storage_data = "Storage info: " + std::to_string(pc.getStorage().getCapacity()) + " | " + pc.getStorage().getType() + " | " + std::to_string(pc.getStorage().getReadSpeed());
 		return Storage_data;
 	}
 	else
 		return "Storage is not installed!";
 }
-string ComputerPresenter::getPowerSupplyInfo()
+std::string ComputerPresenter::getPowerSupplyInfo() const
 {
 	if (pc.isPowerSupplyInstalled())
 	{
-		string PowerSupply_data = "Power Supply info: " + to_string(pc.getPowerSupply().getWattage()) + " | " + pc.getPowerSupply().getCertificate();
+		std::string PowerSupply_data = "Power Supply info: " + std::to_string(pc.getPowerSupply().getWattage()) + " | " + pc.getPowerSupply().getCertificate();
 		return PowerSupply_data;
 	}
 	else
 		return "Power Supply is not installed!";
 }
-string ComputerPresenter::getMotherboardInfo()
+std::string ComputerPresenter::getMotherboardInfo() const
 {
 	if (pc.isMotherboardInstalled())
 	{
-		string Motherboard_data = "Motherboard info: " + pc.getMotherboard().getModel() + " | " + pc.getMotherboard().getChipset() + " | " + pc.getMotherboard().getFormFactor() + " | " + pc.getMotherboard().getSocket() + " | " + pc.getMotherboard().getTypeOfRAM();
+		std::string Motherboard_data = "Motherboard info: " + pc.getMotherboard().getModel() + " | " + pc.getMotherboard().getChipset() + " | " + pc.getMotherboard().getFormFactor() + " | " + pc.getMotherboard().getSocket() + " | " + pc.getMotherboard().getTypeOfRAM();
 		return Motherboard_data;
 	}
 	else
@@ -304,7 +302,7 @@ void ComputerPresenter::checkCompatibility()
 			bool ram_comp = true;
 			for (int i = 0; i < pc.getRAM().size(); i++)
 			{
-				string ram_data = to_string(pc.getRAM().size()) + "x" + pc.getRAM().at(i).getType();
+				std::string ram_data = std::to_string(pc.getRAM().size()) + "x" + pc.getRAM().at(i).getType();
 				if (ram_data != pc.getMotherboard().getTypeOfRAM()) ram_comp = false;
 			}
 			if (ram_comp) view.showMessage("2. RAM and Motherboard are compatible!");
@@ -372,6 +370,7 @@ void ComputerPresenter::checkCompatibility()
 				else
 					view.showMessage("Computer is not very powerful!");
 			}
+			break;
 		}
 		case 0:
 		{
@@ -392,7 +391,7 @@ void ComputerPresenter::writeFileData()
 	if (!pc.isBuildReady()) view.showMessage("Cannot save. Build is not completed!");
 	else
 	{
-		vector <string> data;
+		std::vector <std::string> data;
 		data.push_back(getCPUInfo());
 		data.push_back(getGPUInfo());
 		data.push_back(getRAMInfo());
@@ -408,15 +407,15 @@ void ComputerPresenter::writeFileData()
 
 void ComputerPresenter::readFileData()
 {
-	vector <string> data;
+	std::vector <std::string> data;
 	data = ComputerFileManager::readFile();
 	CPU cpu; GPU gpu; Storage storage; PowerSupply ps; Motherboard mb;
 
 	for (int i = 0; i < data.size(); i++)
 	{
 		size_t posType = data.at(i).find(':');
-		string type = data.at(i).substr(0, posType);//component type
-		string type_data = data.at(i).substr(posType + 1); //the whole data about the component
+		std::string type = data.at(i).substr(0, posType);//component type
+		std::string type_data = data.at(i).substr(posType + 1); //the whole data about the component
 
 		if (type == "CPU info")
 		{
@@ -439,7 +438,7 @@ void ComputerPresenter::readFileData()
 			temp_cpu.socket = type_data; //the last one
 			cpu.setSocket(temp_cpu.socket);
 
-			pc.setCPU(cpu);
+			if(ComputerValidator::isValidCPU(cpu)) pc.setCPU(cpu);
 		}
 		if (type == "GPU info")
 		{
@@ -457,7 +456,7 @@ void ComputerPresenter::readFileData()
 			temp_gpu.powerConsumption = stoi(type_data);
 			gpu.setPowerConsumption(temp_gpu.powerConsumption);
 
-			pc.setGPU(gpu);
+			if(ComputerValidator::isValidGPU(gpu)) pc.setGPU(gpu);
 		}
 		if (type == "Number of Modules")
 		{
@@ -482,7 +481,7 @@ void ComputerPresenter::readFileData()
 				type_data = type_data.substr(posField + 2);
 				
 				RAM ramModule(module.capacity, module.type, module.frequency);
-				pc.addRAM(ramModule);
+				if(ComputerValidator::isValidRAMModule(ramModule)) pc.addRAM(ramModule);
 			}
 		}
 		if (type == "Storage info")
@@ -501,7 +500,7 @@ void ComputerPresenter::readFileData()
 			temp_st.readSpeed = stoi(type_data);
 			storage.setReadSpeed(temp_st.readSpeed);
 
-			pc.setStorage(storage);
+			if(ComputerValidator::isValidStorage(storage)) pc.setStorage(storage);
 		}
 		if (type == "Power Supply info")
 		{
@@ -514,7 +513,7 @@ void ComputerPresenter::readFileData()
 			temp_ps.certificate = type_data;
 			ps.setCertificate(temp_ps.certificate);
 
-			pc.setPowerSupply(ps);
+			if(ComputerValidator::isValidPowerSupply(ps)) pc.setPowerSupply(ps);
 		}
 		if (type == "Motherboard info")
 		{
@@ -541,8 +540,7 @@ void ComputerPresenter::readFileData()
 
 			temp_mb.typeOfRAM = type_data;
 			mb.setTypeOfRAM(temp_mb.typeOfRAM);
-
-			pc.setMotherboard(mb);
+			if(ComputerValidator::isValidMotherboard(mb)) pc.setMotherboard(mb);
 		}
 	}
 }

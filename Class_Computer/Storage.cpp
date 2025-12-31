@@ -2,14 +2,14 @@
 
 //constructor
 Storage::Storage() {}
-Storage::Storage(int c, string t, int rS) : capacity(c), type(t), readSpeed(rS){}
+Storage::Storage(int c, std::string t, int rS) : capacity(c), type(t), readSpeed(rS){}
 
 //setters
 void Storage::setCapacity(const int& new_c)
 {
 	capacity = new_c;
 }
-void Storage::setType(const string& new_t)
+void Storage::setType(const std::string& new_t)
 {
 	type = new_t;
 }
@@ -23,7 +23,7 @@ const int& Storage::getCapacity() const
 {
 	return capacity;
 }
-const string& Storage::getType() const
+const std::string& Storage::getType() const
 {
 	return type;
 }

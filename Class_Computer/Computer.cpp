@@ -1,119 +1,96 @@
 #include "Computer.h"
- 
+
 //constructor
-Computer::Computer() { hasCPU = false; hasGPU = false; hasStorage = false; hasPowerSupply = false; hasMotherboard = false; }
+Computer::Computer()
+    : hasCPU(false), hasGPU(false), hasStorage(false), hasPowerSupply(false), hasMotherboard(false) {
+}
 
 //setters
-bool Computer::setCPU(const CPU& new_c)
+void Computer::setCPU(const CPU& new_c)
 {
-	if (!ComputerValidator::isValidCPU(new_c)) return false;
-	cpu = new_c;
-	hasCPU = true;
-	return true;
+    cpu = new_c;
+    hasCPU = true;
 }
-bool Computer::setGPU(const GPU& new_g)
+void Computer::setGPU(const GPU& new_g)
 {
-	if (!ComputerValidator::isValidGPU(new_g)) return false;
-	gpu = new_g;
-	hasGPU = true;
-	return true;
+    gpu = new_g;
+    hasGPU = true;
 }
-bool Computer::setStorage(const Storage& new_s)
+void Computer::setStorage(const Storage& new_s)
 {
-	if (!ComputerValidator::isValidStorage(new_s)) return false;
-	storage = new_s;
-	hasStorage = true;
-	return true;
+    storage = new_s;
+    hasStorage = true;
 }
-bool Computer::setPowerSupply(const PowerSupply& new_ps)
+void Computer::setPowerSupply(const PowerSupply& new_ps)
 {
-	if (!ComputerValidator::isValidPowerSupply(new_ps)) return false;
-	power_supply = new_ps;
-	hasPowerSupply = true;
-	return true;
+    power_supply = new_ps;
+    hasPowerSupply = true;
 }
-bool Computer::setMotherboard(const Motherboard& new_m)
+void Computer::setMotherboard(const Motherboard& new_m)
 {
-	if (!ComputerValidator::isValidMotherboard(new_m)) return false;
-	motherboard = new_m;
-	hasMotherboard = true;
-	return true;
+    motherboard = new_m;
+    hasMotherboard = true;
 }
 
 //getters
-const CPU& Computer::getCPU()const
+const CPU& Computer::getCPU() const
 {
-	return cpu;
+    return cpu;
 }
-const GPU& Computer::getGPU()const
+const GPU& Computer::getGPU() const
 {
-	return gpu;
+    return gpu;
 }
-const vector<RAM>&  Computer::getRAM() const
+const std::vector<RAM>& Computer::getRAM() const
 {
-	return ramModules;
+    return ramModules;
 }
-const Storage& Computer::getStorage()const
+const Storage& Computer::getStorage() const
 {
-	return storage;
+    return storage;
 }
-const PowerSupply& Computer::getPowerSupply()const
+const PowerSupply& Computer::getPowerSupply() const
 {
-	return power_supply;
+    return power_supply;
 }
-const Motherboard& Computer::getMotherboard()const
+const Motherboard& Computer::getMotherboard() const
 {
-	return motherboard;
+    return motherboard;
 }
 
 //RAM-work
-bool Computer::addRAM(RAM& new_ram)
+void Computer::addRAM(const RAM& new_ram)
 {
-	if (!ComputerValidator::isValidRAMModule(new_ram)) return false;
-	ramModules.push_back(new_ram);
-	return true;
+    ramModules.push_back(new_ram);
 }
 
 bool Computer::isCPUInstalled() const
 {
-	if (hasCPU) return true;
-	else
-		return false;
+    return hasCPU;
 }
 bool Computer::isGPUInstalled() const
 {
-	if (hasGPU) return true;
-	else
-		return false;
+    return hasGPU;
 }
 bool Computer::isRAMInstalled() const
 {
-	if (ramModules.size() > 0) return true;
-	else
-		return false;
+    return !ramModules.empty();
 }
 bool Computer::isStorageInstalled() const
 {
-	if (hasStorage) return true;
-	else
-		return false;
+    return hasStorage;
 }
 bool Computer::isPowerSupplyInstalled() const
 {
-	if (hasPowerSupply) return true;
-	else
-		return false;
+    return hasPowerSupply;
 }
 bool Computer::isMotherboardInstalled() const
 {
-	if (hasMotherboard) return true;
-	else
-		return false;
+    return hasMotherboard;
 }
 
 bool Computer::isBuildReady() const
 {
-	if (isCPUInstalled() && isGPUInstalled() && isRAMInstalled() && isStorageInstalled() && isPowerSupplyInstalled() && isMotherboardInstalled()) return true;
-	else
-		return false;
+    return isCPUInstalled() && isGPUInstalled() && isRAMInstalled() &&
+        isStorageInstalled() && isPowerSupplyInstalled() && isMotherboardInstalled();
 }

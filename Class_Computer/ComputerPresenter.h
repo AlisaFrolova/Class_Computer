@@ -4,36 +4,37 @@
 #include <string>
 
 #include "Computer.h"
-#include "ComputerValidator.h"
 #include "ConsoleView.h"
 #include "InputData.h"
+#include "ComputerValidator.h"
 #include "ComputerFileManager.h"
 
 class ComputerPresenter
 {
 public:
-	ComputerPresenter(Computer& pc, ConsoleView& view);
+    ComputerPresenter(Computer& pc, ConsoleView& view);
 
-	void run();
+    void run();
 private:
-	Computer& pc;
-	ConsoleView& view;
+    Computer& pc;
+    ConsoleView& view;
 
-	//methods
-	void changeComputer();
-	void cleanComputer();
-	void showComputer();
-	void checkBuildState();
-	void checkCompatibility();
+    //methods
+    void changeComputer();
+    void cleanComputer();
+    void showComputer();
+    void checkBuildState();
+    void checkCompatibility();
 
-	string getCPUInfo();
-	string getGPUInfo();
-	string getRAMInfo();
-	string getStorageInfo();
-	string getPowerSupplyInfo();
-	string getMotherboardInfo();
+    std::string getCPUInfo() const;
+    std::string getGPUInfo() const;
+    std::string getRAMInfo() const;
+    std::string getStorageInfo() const;
+    std::string getPowerSupplyInfo() const;
+    std::string getMotherboardInfo() const;
 
-	void writeFileData();
-	void readFileData();
+    void writeFileData();
+    void readFileData();
 };
+
 

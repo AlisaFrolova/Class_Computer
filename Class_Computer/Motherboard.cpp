@@ -2,48 +2,48 @@
 
 //constructor
 Motherboard::Motherboard() {}
-Motherboard::Motherboard(string m, string c, string f, string s, string t) : model(m), chipset(c), formFactor(f), socket(s), typeOfRAM(t) {}
+Motherboard::Motherboard(std::string m, std::string c, std::string f, std::string s, std::string t) : model(m), chipset(c), formFactor(f), socket(s), typeOfRAM(t) {}
 
 //setters
-void Motherboard::setModel(const string& new_m)
+void Motherboard::setModel(const std::string& new_m)
 {
 	model = new_m;
 }
-void Motherboard::setChipset(const string& new_c)
+void Motherboard::setChipset(const std::string& new_c)
 {
 	chipset = new_c;
 }
-void Motherboard::setFormFactor(const string& new_f)
+void Motherboard::setFormFactor(const std::string& new_f)
 {
 	formFactor = new_f;
 }
-void Motherboard::setSocket(const string& new_s)
+void Motherboard::setSocket(const std::string& new_s)
 {
 	socket = new_s;
 }
-void Motherboard::setTypeOfRAM(const string& new_t)
+void Motherboard::setTypeOfRAM(const std::string& new_t)
 {
 	typeOfRAM = new_t;
 }
 
 //getters
-const string& Motherboard::getModel() const
+const std::string& Motherboard::getModel() const
 {
 	return model;
 }
-const string& Motherboard::getChipset() const
+const std::string& Motherboard::getChipset() const
 {
 	return chipset;
 }
-const string& Motherboard::getFormFactor() const
+const std::string& Motherboard::getFormFactor() const
 {
 	return formFactor;
 }
-const string& Motherboard::getSocket() const
+const std::string& Motherboard::getSocket() const
 {
 	return socket;
 }
-const string& Motherboard::getTypeOfRAM() const
+const std::string& Motherboard::getTypeOfRAM() const
 {
 	return typeOfRAM;
 }

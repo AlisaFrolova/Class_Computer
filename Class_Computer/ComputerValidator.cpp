@@ -1,9 +1,5 @@
 #include "ComputerValidator.h"
 
-bool ComputerValidator::isValidType(const string& type)
-{
-	return !type.empty();
-}
 bool ComputerValidator::isValidCPU(const CPU& cpu)
 {
 	if ((cpu.getModel().empty()) ||
@@ -29,7 +25,7 @@ bool ComputerValidator::isValidRAMModule(const RAM& module)
 	else
 	 return true;
 }
-bool ComputerValidator::areValidRAM(const vector <RAM>& ramModules)
+bool ComputerValidator::areValidRAM(const std::vector <RAM>& ramModules)
 {
 	for (int i = 0; i < ramModules.size(); i++)
 	{

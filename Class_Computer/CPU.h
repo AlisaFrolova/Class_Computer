@@ -3,30 +3,28 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class CPU
 {
 private:
-	string model;
+	std::string model;
 	int coresNumber;
 	int frequency; //MHz
-	string socket; 
+	std::string socket;
 public:
 	//constructor
 	CPU();
-	CPU(string m, int cn, int f, string s);
+	CPU(std::string m, int cn, int f, std::string s);
 
 	//setters 
-	void setModel(const string &new_m);
+	void setModel(const std::string &new_m);
 	void setCoresNumber(const int& new_cn);
 	void setFrequency(const int &new_f);
-	void setSocket(const string& new_s);
+	void setSocket(const std::string& new_s);
 
 	//getters
-	const string& getModel() const;
+	const std::string& getModel() const;
 	const int& getCoresNumber() const;
 	const int& getFrequency() const;
-	const string& getSocket() const;
+	const std::string& getSocket() const;
 };
 

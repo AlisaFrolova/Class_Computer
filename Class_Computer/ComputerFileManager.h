@@ -4,14 +4,12 @@
 #include <fstream>
 #include <vector>
 
-using namespace std;
-
-const string FILE_NAME = "ComputerData.txt";
+const std::string FILE_NAME = "ComputerData.txt";
 
 class ComputerFileManager
 {
 public:
-	static void writeFile(const vector <string>& data);
-	static vector <string> readFile();
+	static void writeFile(const std::vector <std::string>& data);
+	static std::vector <std::string> readFile();
 };
 

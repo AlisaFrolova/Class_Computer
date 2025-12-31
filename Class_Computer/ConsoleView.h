@@ -5,8 +5,6 @@
 
 #include "InputData.h"
 
-using namespace std;
-
 class ConsoleView
 {
 public:
@@ -27,9 +25,9 @@ public:
 	int getCompatibilityMenuChoice();
 
 	//Show
-	void showMessage(const string& message);
-	void showComputerComponent(const string& componentInfo);
-	void showComputer(const vector<string>& studentsInfo);
+	void showMessage(const std::string& message);
+	void showComputerComponent(const std::string& componentInfo);
+	void showComputer(const std::vector<std::string>& studentsInfo);
 
 	//Enter data
 	CPUInputData inputCPUData();
@@ -44,7 +42,7 @@ public:
 	
 private:
 	//input data
-	int inputInt(const string& prompt, int min = INT_MIN, int max = INT_MAX);
-	string inputString(const string& prompt);
+	int inputInt(const std::string& prompt, int min = INT_MIN, int max = INT_MAX);
+	std::string inputString(const std::string& prompt);
 };
 
