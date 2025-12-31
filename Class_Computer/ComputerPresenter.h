@@ -7,6 +7,7 @@
 #include "ComputerValidator.h"
 #include "ConsoleView.h"
 #include "InputData.h"
+#include "ComputerFileManager.h"
 
 class ComputerPresenter
 {
@@ -27,9 +28,12 @@ private:
 
 	string getCPUInfo();
 	string getGPUInfo();
-	vector <string> getRAMInfo();
+	string getRAMInfo();
 	string getStorageInfo();
 	string getPowerSupplyInfo();
 	string getMotherboardInfo();
+
+	void writeFileData();
+	void readFileData();
 };
 

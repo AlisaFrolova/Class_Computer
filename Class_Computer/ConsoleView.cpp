@@ -12,13 +12,14 @@ void ConsoleView::showMainMenu()
 	cout << "3. Check build state\n";
 	cout << "4. Show computer's build\n";
 	cout << "5. Clean build (delete)\n";
+	cout << "6. Save build\n";
 	cout << "\033[32m";
 	cout << "0. Exit\n";
 	cout << "\033[0m";
 }
 int ConsoleView::getMainMenuChoice()
 {
-	return inputInt("Choose an option: ", 0, 5);
+	return inputInt("Choose an option: ", 0, 6);
 }
 
 //Edit menu

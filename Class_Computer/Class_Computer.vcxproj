@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Computer.cpp" />
+    <ClCompile Include="ComputerFileManager.cpp" />
     <ClCompile Include="ComputerPresenter.cpp" />
     <ClCompile Include="ComputerValidator.cpp" />
     <ClCompile Include="ConsoleView.cpp" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Computer.h" />
+    <ClInclude Include="ComputerFileManager.h" />
     <ClInclude Include="ComputerPresenter.h" />
     <ClInclude Include="ComputerValidator.h" />
     <ClInclude Include="ConsoleView.h" />
