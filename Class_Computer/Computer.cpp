@@ -63,6 +63,13 @@ void Computer::addRAM(const RAM& new_ram)
 {
     ramModules.push_back(new_ram);
 }
+bool Computer::deleteRAM(const size_t index)
+{
+    if (index >= ramModules.size()) return false;
+
+    ramModules.erase(ramModules.begin() + index);
+    return true;
+}
 
 bool Computer::isCPUInstalled() const
 {

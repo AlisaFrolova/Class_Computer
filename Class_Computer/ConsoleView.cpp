@@ -30,17 +30,30 @@ void ConsoleView::showComputerEditMenu()
 	std::cout << "\033[0m";
 	std::cout << "1. Change CPU\n";
 	std::cout << "2. Change GPU\n";
-	std::cout << "3. Change RAM\n";
-	std::cout << "4. Change Storage\n";
-	std::cout << "5. Change Power Supply\n";
-	std::cout << "6. Change Motherboard\n";
+	std::cout << "3. Add RAM module\n";
+	std::cout << "4. Delete RAM module\n";
+	std::cout << "5. Change Storage\n";
+	std::cout << "6. Change Power Supply\n";
+	std::cout << "7. Change Motherboard\n";
 	std::cout << "\033[32m";
 	std::cout << "0. Back\n";
 	std::cout << "\033[0m";
 }
 int ConsoleView::getComputerEditChoice()
 {
-	return inputInt("Choose an option: ", 0, 6);
+	return inputInt("Choose an option: ", 0, 7);
+}
+
+void ConsoleView::showRAMIndex(std::vector <std::string> RAMInfo)
+{
+	for (int i = 0; i < RAMInfo.size(); i++)
+	{
+		std::cout << i + 1 << ". " << RAMInfo.at(i) << std::endl;
+	}
+}
+int ConsoleView::getRAMEditIndex()
+{
+	return inputInt("Enter index of RAM module: ", 1);
 }
 
 //Computer menu
@@ -97,7 +110,7 @@ void ConsoleView::showComputerComponent(const std::string& componentInfo)
 	std::cout << componentInfo << std::endl;
 	std::cout << "\033[0m";
 }
-void ConsoleView::showComputer(const std::vector<std::string>& computerInfo)
+void ConsoleView::showComputerComponents(const std::vector<std::string>& computerInfo)
 {
 	std::cout << "\033[36m";
 	for (const auto& s : computerInfo)

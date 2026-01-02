@@ -77,6 +77,28 @@ void ComputerPresenter::changeComputer()
 		}
 		case 4:
 		{
+			if (pc.isRAMInstalled())
+			{
+				std::vector<std::string> RAMInfo;
+				for (int i = 0; i < pc.getRAM().size(); i++)
+				{
+					RAMInfo.push_back(std::to_string(pc.getRAM().at(i).getCapacity()) + " | " + pc.getRAM().at(i).getType() + " | " + std::to_string(pc.getRAM().at(i).getFrequency()));
+				}
+				view.showRAMIndex(RAMInfo);
+
+				size_t index = view.getRAMEditIndex(); 
+				if (pc.deleteRAM(index-1)) view.showMessage("RAM module has been deleted!");
+				else
+					view.showMessage("RAM module has not been deleted!");
+			}
+			else
+			{
+				view.showMessage("RAM is not installed!");
+			}
+			break;
+		}
+		case 5:
+		{
 			StorageInputData data3 = view.inputStorageData();
 			Storage storage(data3.capacity, data3.type, data3.readSpeed);
 			if (ComputerValidator::isValidStorage(storage))
@@ -88,7 +110,7 @@ void ComputerPresenter::changeComputer()
 				view.showMessage("Incorrect enter!");
 			break;
 		}
-		case 5:
+		case 6:
 		{
 			PowerSupplyInputData data4 = view.inputPowerSupplyData();
 			PowerSupply power_supply(data4.wattage, data4.certificate);
@@ -101,7 +123,7 @@ void ComputerPresenter::changeComputer()
 				view.showMessage("Incorrect enter!");
 			break;
 		}
-		case 6:
+		case 7:
 		{
 			MotherboardInputData data5 = view.inputMotherboardData();
 			Motherboard motherboard(data5.model, data5.chipset, data5.formFactor, data5.socket, data5.typeOfRAM);
@@ -288,7 +310,7 @@ void ComputerPresenter::checkCompatibility()
 		{
 			if (pc.getCPU().getSocket() == pc.getMotherboard().getSocket()) view.showMessage("CPU and Motherboard are compatible!");
 			else
-				view.showMessage("1. CPU and Motherboard are not compatible!");
+				view.showMessage("CPU and Motherboard are not compatible!");
 		}
 		else
 			view.showMessage("CPU and/or Motherboard are not installed!");
@@ -305,9 +327,9 @@ void ComputerPresenter::checkCompatibility()
 				std::string ram_data = std::to_string(pc.getRAM().size()) + "x" + pc.getRAM().at(i).getType();
 				if (ram_data != pc.getMotherboard().getTypeOfRAM()) ram_comp = false;
 			}
-			if (ram_comp) view.showMessage("2. RAM and Motherboard are compatible!");
+			if (ram_comp) view.showMessage("RAM and Motherboard are compatible!");
 			else
-				view.showMessage("2. RAM and Motherboard are not compatible!");
+				view.showMessage("RAM and Motherboard are not compatible!");
 		}
 		else
 			view.showMessage("RAM and/or Motherboard are not installed");
@@ -324,7 +346,7 @@ void ComputerPresenter::checkCompatibility()
 				wattage_sum = cpu_wattage + pc.getGPU().getPowerConsumption() + ram_wattage + 5 + 30;
 				if (wattage_sum > pc.getPowerSupply().getWattage()) view.showMessage("3. Power Supply is not powerful enough for current build!");
 				else
-					view.showMessage("3. Power Supply is powerful enough for current build!");
+					view.showMessage("Power Supply is powerful enough for current build!");
 			}
 			else
 				view.showMessage("Power Supply is not installed!");

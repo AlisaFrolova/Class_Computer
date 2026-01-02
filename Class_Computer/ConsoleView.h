@@ -16,6 +16,10 @@ public:
 	void showComputerEditMenu();
 	int getComputerEditChoice();
 
+	//RAM edit
+	void showRAMIndex(std::vector <std::string> RAMInfo);
+	int getRAMEditIndex();
+
 	//Computer menu
 	void showComputerMenu();
 	int getComputerMenuChoice();
@@ -27,7 +31,7 @@ public:
 	//Show
 	void showMessage(const std::string& message);
 	void showComputerComponent(const std::string& componentInfo);
-	void showComputer(const std::vector<std::string>& studentsInfo);
+	void showComputerComponents(const std::vector<std::string>& studentsInfo);
 
 	//Enter data
 	CPUInputData inputCPUData();

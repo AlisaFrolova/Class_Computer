@@ -47,6 +47,7 @@ public:
 
     //RAM-work
     void addRAM(const RAM& new_module);
+    bool deleteRAM(const size_t index);
 
     //check for existence
     bool isCPUInstalled() const;
