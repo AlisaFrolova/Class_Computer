@@ -365,7 +365,7 @@ void ComputerPresenter::checkCompatibility()
 
 				//GPU-check
 				if (pc.getGPU().getMemorySize() >= 10) power_points++;
-				
+
 				//RAM-check
 				if (pc.getRAM().size() >= 4) power_points++;
 				int ram_sum = 0;
@@ -375,10 +375,10 @@ void ComputerPresenter::checkCompatibility()
 					if (pc.getRAM().at(i).getType() == "DDR4" || pc.getRAM().at(i).getType() == "DDR5") power_points++;
 				}
 				if (ram_sum >= 16) power_points++;
-				
+
 				//Storage-check
 				if (pc.getStorage().getCapacity() >= 500) power_points++;
-				if (pc.getStorage().getReadSpeed() >= 6000) power_points++;
+				if (pc.getStorage().getReadSpeed() >= 100) power_points++;
 
 				//PowerSupply-check
 				if (pc.getPowerSupply().getWattage() >= 750) power_points++;
@@ -387,11 +387,13 @@ void ComputerPresenter::checkCompatibility()
 				//Motherboard-check
 				if (pc.getMotherboard().getChipset() == "Z" || pc.getMotherboard().getChipset() == "B" || pc.getMotherboard().getChipset() == "X") power_points++;
 				if (pc.getMotherboard().getFormFactor() == "ATX") power_points++;
-				
+
 				if (power_points >= 10) view.showMessage("Computer is powerful!");
 				else
 					view.showMessage("Computer is not very powerful!");
 			}
+			else
+				view.showMessage("Build is not completed!");
 			break;
 		}
 		case 0:
