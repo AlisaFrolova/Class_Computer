@@ -10,7 +10,7 @@ private:
 	int memorySize; //GB
 	int powerConsumption; //Watts
 public:
-	//constructor
+	//constructors
 	GPU();
 	GPU(std::string m, int mS, int pC);
 
@@ -24,4 +24,3 @@ public:
 	const int& getMemorySize() const;
 	const int& getPowerConsumption() const;
 };
-

@@ -12,4 +12,3 @@ public:
 	static void writeFile(const std::vector <std::string>& data);
 	static std::vector <std::string> readFile();
 };
-

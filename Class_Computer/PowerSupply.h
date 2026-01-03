@@ -9,7 +9,7 @@ private:
 	int wattage;
 	std::string certificate;
 public:
-	//constructor
+	//constructors
 	PowerSupply();
 	PowerSupply(int w, std::string c);
 
@@ -21,4 +21,3 @@ public:
 	const int& getWattage() const;
 	const std::string& getCertificate() const;
 };
-

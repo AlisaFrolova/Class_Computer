@@ -1,5 +1,4 @@
 #include "ConsoleView.h"
-#include <iostream>
 
 //Main menu
 void ConsoleView::showMainMenu()
@@ -44,7 +43,7 @@ int ConsoleView::getComputerEditChoice()
 	return inputInt("Choose an option: ", 0, 7);
 }
 
-void ConsoleView::showRAMIndex(std::vector <std::string> RAMInfo)
+void ConsoleView::showRAMByIndex(std::vector <std::string> RAMInfo)
 {
 	for (int i = 0; i < RAMInfo.size(); i++)
 	{
@@ -213,11 +212,4 @@ std::string ConsoleView::inputString(const std::string& prompt)
 		getline(std::cin, s);
 
 	return s;
-}
-
-//staff
-void ConsoleView::pause()
-{
-	std::cout << "\nEnter Enter to continue...";
-	std::cin.ignore(256, '\n');
 }

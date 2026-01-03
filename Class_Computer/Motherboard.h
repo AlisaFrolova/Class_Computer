@@ -12,7 +12,7 @@ private:
 	std::string socket;
 	std::string typeOfRAM; //4xDDR5 for example
 public:
-	//constructor
+	//constructors
 	Motherboard();
 	Motherboard(std::string m, std::string c, std::string f, std::string s, std::string t);
 
@@ -30,4 +30,3 @@ public:
 	const std::string& getSocket() const;
 	const std::string& getTypeOfRAM() const;
 };
-

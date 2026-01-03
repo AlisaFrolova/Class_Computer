@@ -11,7 +11,7 @@ private:
 	int frequency; //MHz
 	std::string socket;
 public:
-	//constructor
+	//constructors
 	CPU();
 	CPU(std::string m, int cn, int f, std::string s);
 
@@ -27,4 +27,3 @@ public:
 	const int& getFrequency() const;
 	const std::string& getSocket() const;
 };
-

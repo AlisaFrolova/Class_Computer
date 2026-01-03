@@ -1,6 +1,6 @@
 #include "PowerSupply.h"
 
-//constructor
+//constructors
 PowerSupply::PowerSupply() {}
 PowerSupply::PowerSupply(int w, std::string c) : wattage(w), certificate(c){}
 

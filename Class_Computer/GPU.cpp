@@ -1,6 +1,6 @@
 #include "GPU.h"
 
-//constructor
+//constructors
 GPU::GPU() {}
 GPU::GPU(std::string m, int mS, int pC) : model(m), memorySize(mS), powerConsumption(pC){}
 

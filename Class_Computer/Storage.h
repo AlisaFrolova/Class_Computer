@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <string>
 
@@ -9,7 +10,7 @@ private:
 	std::string type;
 	int readSpeed; //MB/s
 public:
-	//constructor
+	//constructors
 	Storage();
 	Storage(int c, std::string t, int rS);
 
@@ -23,4 +24,3 @@ public:
 	const std::string& getType() const;
 	const int& getReadSpeed() const;
 };
-

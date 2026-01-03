@@ -13,13 +13,13 @@ void ComputerPresenter::run()
 
 		switch (choice)
 		{
-		case 1: changeComputer(); break; // +
-		case 2: checkCompatibility(); break;//+
-		case 3: checkBuildState(); break; //+
-		case 4: showComputer(); break; //+
-		case 5: cleanComputer(); break; //+
-		case 6: writeFileData(); break; //+
-		case 0: running = false; break; //+
+		case 1: changeComputer(); break; 
+		case 2: checkCompatibility(); break;
+		case 3: checkBuildState(); break; 
+		case 4: showComputer(); break; 
+		case 5: cleanComputer(); break; 
+		case 6: writeFileData(); break; 
+		case 0: running = false; break; 
 		default: view.showMessage("Incorrect enter."); break;
 		}
 	}
@@ -84,7 +84,7 @@ void ComputerPresenter::changeComputer()
 				{
 					RAMInfo.push_back(std::to_string(pc.getRAM().at(i).getCapacity()) + " | " + pc.getRAM().at(i).getType() + " | " + std::to_string(pc.getRAM().at(i).getFrequency()));
 				}
-				view.showRAMIndex(RAMInfo);
+				view.showRAMByIndex(RAMInfo);
 
 				size_t index = view.getRAMEditIndex(); 
 				if (pc.deleteRAM(index-1)) view.showMessage("RAM module has been deleted!");

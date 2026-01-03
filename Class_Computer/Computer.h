@@ -21,13 +21,14 @@ private:
     PowerSupply power_supply;
     Motherboard motherboard;
 
+    //flags of existence
     bool hasCPU;
     bool hasGPU;
     bool hasStorage;
     bool hasPowerSupply;
     bool hasMotherboard;
 public:
-    //constructor
+    //default constructor
     Computer();
 
     //setters
@@ -46,10 +47,10 @@ public:
     const Motherboard& getMotherboard() const;
 
     //RAM-work
-    void addRAM(const RAM& new_module);
+    void addRAM(const RAM& new_module); 
     bool deleteRAM(const size_t index);
 
-    //check for existence
+    //components check
     bool isCPUInstalled() const;
     bool isGPUInstalled() const;
     bool isRAMInstalled() const;
@@ -57,5 +58,6 @@ public:
     bool isPowerSupplyInstalled() const;
     bool isMotherboardInstalled() const;
 
+    //build check
     bool isBuildReady() const;
 };

@@ -23,4 +23,3 @@ public:
 	const std::string& getType() const;
 	const int& getFrequency() const;
 };
-

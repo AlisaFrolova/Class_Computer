@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -17,7 +18,7 @@ public:
 	int getComputerEditChoice();
 
 	//RAM edit
-	void showRAMIndex(std::vector <std::string> RAMInfo);
+	void showRAMByIndex(std::vector <std::string> RAMInfo);
 	int getRAMEditIndex();
 
 	//Computer menu
@@ -41,12 +42,8 @@ public:
 	PowerSupplyInputData inputPowerSupplyData();
 	MotherboardInputData inputMotherboardData();
 
-	//staff
-	void pause();
-	
 private:
 	//input data
 	int inputInt(const std::string& prompt, int min = INT_MIN, int max = INT_MAX);
 	std::string inputString(const std::string& prompt);
 };
-

@@ -1,6 +1,6 @@
 #include "Motherboard.h"
 
-//constructor
+//constructors
 Motherboard::Motherboard() {}
 Motherboard::Motherboard(std::string m, std::string c, std::string f, std::string s, std::string t) : model(m), chipset(c), formFactor(f), socket(s), typeOfRAM(t) {}
 

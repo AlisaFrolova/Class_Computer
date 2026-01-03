@@ -71,6 +71,7 @@ bool Computer::deleteRAM(const size_t index)
     return true;
 }
 
+//Components check
 bool Computer::isCPUInstalled() const
 {
     return hasCPU;
@@ -96,6 +97,7 @@ bool Computer::isMotherboardInstalled() const
     return hasMotherboard;
 }
 
+//Build check
 bool Computer::isBuildReady() const
 {
     return isCPUInstalled() && isGPUInstalled() && isRAMInstalled() &&

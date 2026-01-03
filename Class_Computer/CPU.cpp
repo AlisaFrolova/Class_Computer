@@ -1,7 +1,7 @@
 #include "CPU.h"
 
-//constructor
-CPU::CPU() {}
+//constructors
+CPU::CPU() {} 
 CPU::CPU(std::string m, int cn, int f, std::string s) : model(m), coresNumber(cn), frequency(f), socket(s){}
 
 //setters 

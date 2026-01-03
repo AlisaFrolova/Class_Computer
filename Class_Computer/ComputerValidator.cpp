@@ -9,6 +9,7 @@ bool ComputerValidator::isValidCPU(const CPU& cpu)
 	else
 	  return true;
 }
+
 bool ComputerValidator::isValidGPU(const GPU& gpu)
 {
 	if ((gpu.getModel().empty()) ||
@@ -17,6 +18,7 @@ bool ComputerValidator::isValidGPU(const GPU& gpu)
 	else
 	  return true;
 }
+
 bool ComputerValidator::isValidRAMModule(const RAM& module)
 {
 	if ((module.getCapacity() <= 0) ||
@@ -25,6 +27,7 @@ bool ComputerValidator::isValidRAMModule(const RAM& module)
 	else
 	 return true;
 }
+
 bool ComputerValidator::areValidRAM(const std::vector <RAM>& ramModules)
 {
 	for (int i = 0; i < ramModules.size(); i++)
@@ -36,6 +39,7 @@ bool ComputerValidator::areValidRAM(const std::vector <RAM>& ramModules)
 
 	  return true;
 }
+
 bool ComputerValidator::isValidStorage(const Storage& storage)
 {
 	if ((storage.getCapacity() <= 0) ||
@@ -44,6 +48,7 @@ bool ComputerValidator::isValidStorage(const Storage& storage)
 	else
 	  return true;
 }
+
 bool ComputerValidator::isValidPowerSupply(const PowerSupply& power_supply)
 {
 	if ((power_supply.getWattage() <= 0) ||
@@ -51,6 +56,7 @@ bool ComputerValidator::isValidPowerSupply(const PowerSupply& power_supply)
 	else
 	  return true;
 }
+
 bool ComputerValidator::isValidMotherboard(const Motherboard& motherboard)
 {
 	if ((motherboard.getModel().empty()) ||

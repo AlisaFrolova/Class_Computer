@@ -13,8 +13,6 @@
 class ComputerValidator
 {
 public: 
-	static const int MIN_NUMBER_OF_MODULES = 1;
-
 	static bool isValidCPU(const CPU& cpu);
 	static bool isValidGPU(const GPU& gpu);
 	static bool isValidRAMModule(const RAM& module);
@@ -23,4 +21,3 @@ public:
 	static bool isValidPowerSupply(const PowerSupply& power_supply);
 	static bool isValidMotherboard(const Motherboard& motherboard);
 };
-

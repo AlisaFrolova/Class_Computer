@@ -12,6 +12,7 @@
 class ComputerPresenter
 {
 public:
+    //constructor
     ComputerPresenter(Computer& pc, ConsoleView& view);
 
     void run();
@@ -26,6 +27,7 @@ private:
     void checkBuildState();
     void checkCompatibility();
 
+    //Info of components
     std::string getCPUInfo() const;
     std::string getGPUInfo() const;
     std::string getRAMInfo() const;
@@ -33,8 +35,7 @@ private:
     std::string getPowerSupplyInfo() const;
     std::string getMotherboardInfo() const;
 
+    //File work
     void writeFileData();
     void readFileData();
 };
-
-
