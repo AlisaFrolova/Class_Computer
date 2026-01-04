@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include <string>
 
@@ -28,7 +29,7 @@ private:
     void checkBuildState();
     void checkCompatibility();
 
-    //File work
+    //File work (parsers)
     void saveComputer();
     void createComputerFromFile();
 };

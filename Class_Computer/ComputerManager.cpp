@@ -17,8 +17,11 @@ bool ComputerManager::areRAMAndMotherboardCompatible(const Computer& pc)
 	{
 		for (int i = 0; i < pc.getRAM().size(); i++)
 		{
-			std::string ram_data = std::to_string(pc.getRAM().size()) + "x" + pc.getRAM().at(i).getType();
-			if (ram_data != pc.getMotherboard().getTypeOfRAM()) return false;
+			int max_ram_size = 0;
+			int pos = (pc.getMotherboard().getTypeOfRAM().find('x'));
+			if (pos != std::string::npos) max_ram_size = std::stoi(pc.getMotherboard().getTypeOfRAM().substr(0, pos));
+			if (pc.getRAM().size() > max_ram_size) return false;
+			if (pc.getMotherboard().getTypeOfRAM().find(pc.getRAM().at(i).getType()) == std::string::npos) return false;
 		}
 		return true;
 	}

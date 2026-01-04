@@ -167,7 +167,7 @@ MotherboardInputData ConsoleView::inputMotherboardData()
 {
 	MotherboardInputData data;
 	data.model = inputString("Enter model of motherboard: ");
-	data.chipset = inputString("Enter chipset of motherboard: ");
+	data.chipset = inputString("Enter chipset of motherboard(A, X, Z and etc.) : ");
 	data.formFactor = inputString("Enter form factor of motherboard: ");
 	data.socket = inputString("Enter socket of motherboard: ");
 	data.typeOfRAM = inputString("Enter type of RAM of motherboard (For example, 4xDDR5) : ");
