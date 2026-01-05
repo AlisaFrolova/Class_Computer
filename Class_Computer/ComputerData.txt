@@ -1,6 +1,6 @@
-CPU info:  AMD Ryzen 8400F | 8 | 55 | AMX
-GPU info:  RTZ 4060 | 16 | 55
+CPU info:   AMD Ryzen 8400F | 8 | 55 | AMX
+GPU info:   RTZ 4060 | 16 | 55
 Number of Modules: 2: 8 | DDR4 | 23; 8 | DDR4 | 23; 
 Storage info: 1800 | SSD | 8000
 Power Supply info: 850 | Platinum
-Motherboard info: AWs | B | A | AMX | 4xDDR4
+Motherboard info: Aws | B | ATX | AMX | 4xDDR4
