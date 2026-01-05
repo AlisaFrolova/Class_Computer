@@ -11,16 +11,16 @@ class ComputerManager
 {
 	public:
 		//CPU - Motherboard compatibility
-		static bool areCPUAndMotherboardCompatible(const Computer& pc);
+		static bool areCPUAndMotherboardCompatible(const Computer& pc, std::string& error_message);
 
 		//RAM - Motherboard compatibility
-		static bool areRAMAndMotherboardCompatible(const Computer& pc);
+		static bool areRAMAndMotherboardCompatible(const Computer& pc, std::string& error_message);
 
 		//Power Supply check
-		static bool isPowerSupplyPowerful(const Computer& pc);
+		static bool isPowerSupplyPowerful(const Computer& pc, std::string& error_message);
 
 		//Computer power check
-		static bool isComputerPowerful(const Computer& pc);
+		static bool isComputerPowerful(const Computer& pc, std::string& error_message);
 
 		//Read data from file
 		static Computer readFileData(const std::vector<std::string> data);

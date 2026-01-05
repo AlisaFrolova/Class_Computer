@@ -1,17 +1,21 @@
 #include "ComputerManager.h"
 
 //CPU - Motherboard compatibility
-bool ComputerManager::areCPUAndMotherboardCompatible(const Computer& pc)
+bool ComputerManager::areCPUAndMotherboardCompatible(const Computer& pc, std::string& error_message)
 {
 	if (pc.isCPUInstalled() && pc.isMotherboardInstalled())
 	{
 		if (pc.getCPU().getSocket() == pc.getMotherboard().getSocket()) return true;
+		else
+			error_message = "CPU and Motherboard are not compatible!";
 	}
+	else
+		error_message = "CPU or/and Motherboard is not installed!";
 	return false;
 }
 
 //RAM - Motherboard compatibility
-bool ComputerManager::areRAMAndMotherboardCompatible(const Computer& pc)
+bool ComputerManager::areRAMAndMotherboardCompatible(const Computer& pc, std::string& error_message)
 {
 	if (pc.isRAMInstalled() && pc.isMotherboardInstalled())
 	{
@@ -20,34 +24,57 @@ bool ComputerManager::areRAMAndMotherboardCompatible(const Computer& pc)
 			int max_ram_size = 0;
 			int pos = (pc.getMotherboard().getTypeOfRAM().find('x'));
 			if (pos != std::string::npos) max_ram_size = std::stoi(pc.getMotherboard().getTypeOfRAM().substr(0, pos));
-			if (pc.getRAM().size() > max_ram_size) return false;
-			if (pc.getMotherboard().getTypeOfRAM().find(pc.getRAM().at(i).getType()) == std::string::npos) return false;
+			else
+			{
+				error_message = "Invalid type of RAM for Motherboard!";
+				return false;
+			}
+			if (pc.getRAM().size() > max_ram_size)
+			{
+				error_message = "Number of RAM modules is greater than the number of slots for RAM on the Motherboard!";
+				return false;
+			}
+			if (pc.getMotherboard().getTypeOfRAM().find(pc.getRAM().at(i).getType()) == std::string::npos)
+			{
+				error_message = "Type of RAM modules differs from the type of RAM on the Motherboard!";
+				return false;
+			}
 		}
 		return true;
 	}
 	else
+	{
+		error_message = "RAM or/and Motherboard is not installed!";
 		return false;
+	}
 }
 
 //Power Supply check
-bool ComputerManager::isPowerSupplyPowerful(const Computer& pc)
+bool ComputerManager::isPowerSupplyPowerful(const Computer& pc, std::string& error_message)
 {
-	if (pc.isPowerSupplyInstalled())
+	if (pc.isBuildReady())
 	{
 		int wattage_sum;
 		int cpu_wattage = pc.getCPU().getCoresNumber() * 0.002 * pc.getCPU().getFrequency();
 		int ram_wattage = pc.getRAM().size() * 3;
 		wattage_sum = cpu_wattage + pc.getGPU().getPowerConsumption() + ram_wattage + 5 + 30;
-		if (wattage_sum > pc.getPowerSupply().getWattage()) return false;
+		if (wattage_sum > pc.getPowerSupply().getWattage())
+		{
+			error_message = "Power Supply is not powerful enough for current build!";
+			return false;
+		}
 		else
 			return true;
 	}
 	else
+	{
+		error_message = "Build is not completed!";
 		return false;
+	}
 }
 
 //Computer power check
-bool ComputerManager::isComputerPowerful(const Computer& pc)
+bool ComputerManager::isComputerPowerful(const Computer& pc, std::string& error_message)
 {
 	if (pc.isBuildReady())
 	{
@@ -84,10 +111,16 @@ bool ComputerManager::isComputerPowerful(const Computer& pc)
 
 		if (power_points >= 10) return true;
 		else
+		{
+			error_message = "Build is not very powerful!";
 			return false;
+		}
 	}
 	else
+	{
+		error_message = "Build is not completed!";
 		return false;
+	}
 }
 
 //Read data from file

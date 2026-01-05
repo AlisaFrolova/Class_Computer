@@ -232,35 +232,36 @@ void ComputerPresenter::checkCompatibility()
 	{
 		view.showCompatibilityMenu();
 		int choice = view.getCompatibilityMenuChoice();
+		std::string error;
 
 		switch (choice)
 		{
 		case 1:
 		{
-			if (ComputerManager::areCPUAndMotherboardCompatible(pc)) view.showMessage("CPU and Motherboard are compatible!");
+			if (ComputerManager::areCPUAndMotherboardCompatible(pc, error)) view.showMessage("CPU and Motherboard are compatible!");
 			else
-			   view.showMessage("CPU and/or Motherboard are not compatible or not installed!");
+			   view.showMessage(error);
 		break;
 		}
 		case 2:
 		{
-		    if (ComputerManager::areRAMAndMotherboardCompatible(pc)) view.showMessage("RAM and Motherboard are compatible!");
+		    if (ComputerManager::areRAMAndMotherboardCompatible(pc, error)) view.showMessage("RAM and Motherboard are compatible!");
 		    else
-		       view.showMessage("RAM and/or Motherboard are not compatible or not installed!");
+		       view.showMessage(error);
 		break;
 		}
 		case 3:
 		{
-			if (ComputerManager::isPowerSupplyPowerful(pc)) view.showMessage("Power Supply is powerful enough for current build!");
+			if (ComputerManager::isPowerSupplyPowerful(pc, error)) view.showMessage("Power Supply is powerful enough for current build!");
 			else
-				view.showMessage("Power Supply is not powerful enough or not installed!");
+				view.showMessage(error);
 			break;
 		}
 		case 4:
 		{
-			if (ComputerManager::isComputerPowerful(pc)) view.showMessage("Computer is powerful!");
+			if (ComputerManager::isComputerPowerful(pc, error)) view.showMessage("Computer is powerful!");
 			else
-				view.showMessage("Build is not completed or not very powerful!");
+				view.showMessage(error);
 			break;
 		}
 		case 0:
