@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "Computer.h"
 #include "ConsoleView.h"
 #include "ComputerPresenter.h"
