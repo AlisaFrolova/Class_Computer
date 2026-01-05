@@ -19,27 +19,29 @@ bool ComputerManager::areRAMAndMotherboardCompatible(const Computer& pc, std::st
 {
 	if (pc.isRAMInstalled() && pc.isMotherboardInstalled())
 	{
+		int max_ram_size = 0;
+		int pos = (pc.getMotherboard().getTypeOfRAM().find('x'));
+		if (pos != std::string::npos) max_ram_size = std::stoi(pc.getMotherboard().getTypeOfRAM().substr(0, pos));
+		else
+		{
+			error_message = "Invalid type of RAM for Motherboard!";
+			return false;
+		}
+		if (pc.getRAM().size() > max_ram_size)
+		{
+			error_message = "Number of RAM modules is greater than the number of slots for RAM on the Motherboard!";
+			return false;
+		}
+
 		for (int i = 0; i < pc.getRAM().size(); i++)
 		{
-			int max_ram_size = 0;
-			int pos = (pc.getMotherboard().getTypeOfRAM().find('x'));
-			if (pos != std::string::npos) max_ram_size = std::stoi(pc.getMotherboard().getTypeOfRAM().substr(0, pos));
-			else
-			{
-				error_message = "Invalid type of RAM for Motherboard!";
-				return false;
-			}
-			if (pc.getRAM().size() > max_ram_size)
-			{
-				error_message = "Number of RAM modules is greater than the number of slots for RAM on the Motherboard!";
-				return false;
-			}
 			if (pc.getMotherboard().getTypeOfRAM().find(pc.getRAM().at(i).getType()) == std::string::npos)
 			{
 				error_message = "Type of RAM modules differs from the type of RAM on the Motherboard!";
 				return false;
 			}
 		}
+
 		return true;
 	}
 	else
